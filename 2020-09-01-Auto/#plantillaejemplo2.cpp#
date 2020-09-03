@@ -1,0 +1,11 @@
+#include <iostream>
+#include <string>
+
+int mai
+n (int argc, char **argv)
+{
+  std::string fullname;
+  std::cout << "Jaime Murillo Espitia:\n";
+  std::getline(std::cin, fullname);
+  return 0;
+}
