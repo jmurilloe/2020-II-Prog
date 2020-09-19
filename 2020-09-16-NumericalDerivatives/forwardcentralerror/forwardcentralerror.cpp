@@ -6,7 +6,7 @@
 
 double f(double x);
 double deriv_forward(double x, double h);
-
+double deriv_central (double x, double h);
 
 int main(int argc, char **argv)
 {
@@ -19,8 +19,10 @@ int main(int argc, char **argv)
     {
         double x = XMIN + ii*DX;
         double error_forward = std::fabs(1 - deriv_forward(x, DX)/std::cos(x));
-        std::cout << x << "\t" <<  f(x)
+        double error_central = std::fabs(1 - deriv_central(x, DX)/std::cos(x));
+        std::cout << x
                   << "\t" <<  error_forward
+                  << "\t" <<  error_central
                   << "\n";
     }
     
@@ -37,4 +39,8 @@ double deriv_forward (double x, double h)
     
 {
     return (f(x+h)-f(x))/h;
+}
+double deriv_central (double x, double h)
+{
+    return (f(x+h/2)-f(x-h/2))/h;
 }
